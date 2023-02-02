@@ -63,10 +63,10 @@ for (let i = 0; i < world1.length; i++) {
     const currentTile = numToTile(world1[i][j]);
     const tileDiv = document.createElement("div");
     tileGrid.appendChild(tileDiv);
-    tileDiv.style.gridRowStart = i + 1;
-    tileDiv.style.gridRowEnd = i + 2;
-    tileDiv.style.gridColumnStart = j + 1;
-    tileDiv.style.gridColumnEnd = j + 2;
+    // tileDiv.style.gridRowStart = i + 1;
+    // tileDiv.style.gridRowEnd = i + 2;
+    // tileDiv.style.gridColumnStart = j + 1;
+    // tileDiv.style.gridColumnEnd = j + 2;
     tileDiv.classList.add(currentTile.class);
     tileDiv.classList.add(currentTile.tool);
     tileDiv.addEventListener("click", function (event) {
