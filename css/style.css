@@ -1,0 +1,53 @@
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blocks {
+  display: grid;
+  grid-template-columns: repeat(30, 1fr);
+  grid-template-rows: repeat(30, 1fr);
+  width: 100vmin;
+  height: 100vmin;
+  border: 1px solid black;
+  background-color: skyblue;
+}
+
+.blocks > div {
+    width:100%;
+    height:100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.dirt {
+    background-image: url('/assets/img/dirt.jpg');
+
+}
+
+.dirt-grass {
+    background-image: url('/assets/img/dirt-grass.jpg');
+}
+
+.tree {
+    background-image: url('/assets/img/log.jpg');
+}
+
+.leaf {
+    background-image: url('/assets/img/leaves.jpg');
+}
+
+.stone {
+    background-image: url('/assets/img/stone.jpg');
+}
+
+.sand {
+    background-image: url('/assets/img/sand.jpg');
+}
+
+.cloud {
+    background-color: white;
+}
