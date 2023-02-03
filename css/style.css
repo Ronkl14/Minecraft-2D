@@ -70,6 +70,10 @@ body {
   font-size: 1.8rem;
 }
 
+.removed {
+    display: none;
+}
+
 .dirt {
   background-image: url("/assets/img/dirt.jpg");
 }
