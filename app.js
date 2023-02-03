@@ -1,4 +1,14 @@
 import { world1 } from "./worlds.js";
+import {
+  background,
+  dirt,
+  dirtGrass,
+  sand,
+  stone,
+  wood,
+  leaf,
+  cloud,
+} from "./tiles.js";
 
 const tileGrid = document.querySelector(".blocks");
 const axe = document.querySelector(".axe");
@@ -12,46 +22,6 @@ const load = document.querySelector(".load");
 let currTool;
 let inventory = [];
 let removedFromInventory;
-
-const background = {
-  tool: "tool",
-  class: "class",
-};
-
-const dirt = {
-  tool: "shovel",
-  class: "dirt",
-};
-
-const dirtGrass = {
-  tool: "shovel",
-  class: "dirt-grass",
-};
-
-const sand = {
-  tool: "shovel",
-  class: "sand",
-};
-
-const stone = {
-  tool: "pickaxe",
-  class: "stone",
-};
-
-const wood = {
-  tool: "axe",
-  class: "tree",
-};
-
-const leaf = {
-  tool: "axe",
-  class: "leaf",
-};
-
-const cloud = {
-  tool: "tool",
-  class: "cloud",
-};
 
 function numToTile(num) {
   switch (num) {
@@ -197,5 +167,3 @@ load.addEventListener("click", function () {
 });
 
 createWorld(world1);
-console.log(tileGrid.children[7]);
-console.log(tileGrid.childNodes[7]);
