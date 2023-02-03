@@ -78,6 +78,13 @@ body {
   background-repeat: no-repeat;
 }
 
+.tools .btn {
+    background-color: rgb(202, 202, 202);
+    padding:1rem 2.5rem;
+    font-family: 'Minecraft';
+    font-size: 1.5rem;
+}
+
 .dirt {
   background-image: url("/assets/img/dirt.jpg");
 }

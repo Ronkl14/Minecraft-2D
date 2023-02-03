@@ -5,6 +5,8 @@ const axe = document.querySelector(".axe");
 const pickaxe = document.querySelector(".pickaxe");
 const shovel = document.querySelector(".shovel");
 const inventoryButton = document.querySelector(".inventory");
+const save = document.querySelector(".save");
+const reset = document.querySelector(".reset");
 
 let currTool;
 let inventory = [];
@@ -108,18 +110,22 @@ function addToInventory(tile) {
 }
 
 function inventoryShowLast() {
-  console.log(inventoryButton);
+  inventoryButton.classList.remove("removed");
   inventoryButton.classList.remove(inventoryButton.classList[1]);
   inventoryButton.classList.add(inventory[inventory.length - 1][0]);
+  console.log(inventoryButton);
 }
 
-function updateInventoryDisp(tile) {
-  removedFromInventory = inventory.pop();
+function updateInventoryDisp() {
   inventoryShowLast();
+  removedFromInventory = inventory.pop();
+  if (inventory.length === 0) {
+    inventoryButton.classList.add('removed');
+  }
+  console.log(inventory);
 }
 
 function insertTile(tile) {
-  console.log(tile.classList[0]);
   if (tile.classList[0] === "class" || tile.classList[2] === "removed") {
     updateInventoryDisp();
     tile.classList.remove(...tile.classList);
@@ -158,5 +164,13 @@ function createWorld(world) {
     }
   }
 }
+
+reset.addEventListener("click", function () {
+  tileGrid.textContent = "";
+  inventory = [];
+  inventoryButton.classList.add("removed");
+  console.log(inventoryButton);
+  createWorld(world1);
+});
 
 createWorld(world1);
