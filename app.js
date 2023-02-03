@@ -1,3 +1,5 @@
+// ------------------------------------------------- Imports -------------------------------------------------------------
+
 import { world1 } from "./worlds.js";
 import {
   background,
@@ -10,6 +12,8 @@ import {
   cloud,
 } from "./tiles.js";
 
+// ------------------------------------------------- Variables -------------------------------------------------------------
+
 const tileGrid = document.querySelector(".blocks");
 const axe = document.querySelector(".axe");
 const pickaxe = document.querySelector(".pickaxe");
@@ -19,9 +23,10 @@ const save = document.querySelector(".save");
 const reset = document.querySelector(".reset");
 const load = document.querySelector(".load");
 
-let currTool;
+let currTool, removedFromInventory;
 let inventory = [];
-let removedFromInventory;
+
+// ------------------------------------------------- Functions -------------------------------------------------------------
 
 function numToTile(num) {
   switch (num) {
@@ -45,26 +50,6 @@ function numToTile(num) {
       return "";
   }
 }
-
-axe.addEventListener("click", function () {
-  currTool = "axe";
-  console.log(currTool);
-});
-
-shovel.addEventListener("click", function () {
-  currTool = "shovel";
-  console.log(currTool);
-});
-
-pickaxe.addEventListener("click", function () {
-  currTool = "pickaxe";
-  console.log(currTool);
-});
-
-inventoryButton.addEventListener("click", function () {
-  currTool = "inventory";
-  console.log(currTool);
-});
 
 function checkMatch(tile, currTool) {
   return tile.classList.contains(currTool) &&
@@ -122,6 +107,15 @@ function addListeners(tileDiv) {
   });
 }
 
+function createWorld(world) {
+  for (let i = 0; i < world.length; i++) {
+    for (let j = 0; j < world[i].length; j++) {
+      const tileDiv = createTile(world, i, j);
+      addListeners(tileDiv);
+    }
+  }
+}
+
 function createTile(world, rows, cols) {
   const currentTile = numToTile(world[rows][cols]);
   const tileDiv = document.createElement("div");
@@ -135,14 +129,27 @@ function createTile(world, rows, cols) {
   return tileDiv;
 }
 
-function createWorld(world) {
-  for (let i = 0; i < world.length; i++) {
-    for (let j = 0; j < world[i].length; j++) {
-      const tileDiv = createTile(world, i, j);
-      addListeners(tileDiv);
-    }
-  }
-}
+// ------------------------------------------------- Event Listeners -------------------------------------------------------------
+
+axe.addEventListener("click", function () {
+  currTool = "axe";
+  console.log(currTool);
+});
+
+shovel.addEventListener("click", function () {
+  currTool = "shovel";
+  console.log(currTool);
+});
+
+pickaxe.addEventListener("click", function () {
+  currTool = "pickaxe";
+  console.log(currTool);
+});
+
+inventoryButton.addEventListener("click", function () {
+  currTool = "inventory";
+  console.log(currTool);
+});
 
 reset.addEventListener("click", function () {
   tileGrid.textContent = "";
@@ -165,5 +172,7 @@ load.addEventListener("click", function () {
   inventory = localStorage.getItem("inventory");
   inventoryShowLast();
 });
+
+// ------------------------------------------------- Run App -------------------------------------------------------------
 
 createWorld(world1);
