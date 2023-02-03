@@ -120,7 +120,7 @@ function updateInventoryDisp(tile) {
 
 function insertTile(tile) {
   console.log(tile.classList[0]);
-  if (tile.classList[0] === "class" || tile.classList[2] ==="removed") {
+  if (tile.classList[0] === "class" || tile.classList[2] === "removed") {
     updateInventoryDisp();
     tile.classList.remove(...tile.classList);
     tile.classList.add(removedFromInventory[0]);
@@ -128,28 +128,35 @@ function insertTile(tile) {
   }
 }
 
-for (let i = 0; i < world1.length; i++) {
-  for (let j = 0; j < world1[i].length; j++) {
-    const currentTile = numToTile(world1[i][j]);
-    const tileDiv = document.createElement("div");
-    tileGrid.appendChild(tileDiv);
-    tileDiv.style.gridRowStart = i + 1;
-    tileDiv.style.gridRowEnd = i + 2;
-    tileDiv.style.gridColumnStart = j + 1;
-    tileDiv.style.gridColumnEnd = j + 2;
-    tileDiv.classList.add(currentTile.class);
-    tileDiv.classList.add(currentTile.tool);
-    tileDiv.addEventListener("click", function (event) {
-      console.log(event.target);
-      if (checkMatch(event.target, currTool)) {
-        removeTile(event.target);
-        addToInventory(event.target);
-        inventoryShowLast();
-      }
-      if (currTool === "inventory") {
-        console.log(inventory);
-        insertTile(event.target);
-      }
-    });
+function createTile(world, rows, cols) {
+  const currentTile = numToTile(world[rows][cols]);
+  const tileDiv = document.createElement("div");
+  tileGrid.appendChild(tileDiv);
+  tileDiv.style.gridRowStart = rows + 1;
+  tileDiv.style.gridRowEnd = rows + 2;
+  tileDiv.style.gridColumnStart = cols + 1;
+  tileDiv.style.gridColumnEnd = cols + 2;
+  tileDiv.classList.add(currentTile.class);
+  tileDiv.classList.add(currentTile.tool);
+  return tileDiv;
+}
+
+function createWorld(world) {
+  for (let i = 0; i < world.length; i++) {
+    for (let j = 0; j < world[i].length; j++) {
+      const tileDiv = createTile(world, i, j);
+      tileDiv.addEventListener("click", function (event) {
+        if (checkMatch(event.target, currTool)) {
+          removeTile(event.target);
+          addToInventory(event.target);
+          inventoryShowLast();
+        }
+        if (currTool === "inventory") {
+          insertTile(event.target);
+        }
+      });
+    }
   }
 }
+
+createWorld(world1);
