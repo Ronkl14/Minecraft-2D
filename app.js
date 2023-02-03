@@ -71,13 +71,15 @@ function addToInventory(tile) {
 function inventoryShowLast() {
   inventoryButton.classList.remove("removed");
   inventoryButton.classList.remove(inventoryButton.classList[1]);
-  inventoryButton.classList.add(inventory[inventory.length - 1][0]);
+  if (inventory.length > 0) {
+    inventoryButton.classList.add(inventory[inventory.length - 1][0]);
+  }
   console.log(inventoryButton);
 }
 
 function updateInventoryDisp() {
-  inventoryShowLast();
   removedFromInventory = inventory.pop();
+  inventoryShowLast();
   if (inventory.length === 0) {
     inventoryButton.classList.add("removed");
   }
@@ -103,7 +105,7 @@ function addListeners(tileDiv) {
     if (currTool === "inventory") {
       insertTile(event.target);
     }
-    console.log(event);
+    console.log(event.target);
   });
 }
 
