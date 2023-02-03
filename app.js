@@ -161,16 +161,21 @@ reset.addEventListener("click", function () {
 
 save.addEventListener("click", function () {
   localStorage.setItem("progress", tileGrid.innerHTML);
-  localStorage.setItem("inventory", inventory);
+  localStorage.setItem("inventory", JSON.stringify(inventory));
+  localStorage.setItem("inventoryBTN", inventoryButton.classList);
 });
+
+let classes = "blalala";
+console.log(classes);
 
 load.addEventListener("click", function () {
   tileGrid.innerHTML = localStorage.getItem("progress");
   for (let i = 0; i < tileGrid.children.length; i++) {
     addListeners(tileGrid.children[i]);
   }
-  inventory = localStorage.getItem("inventory");
-  inventoryShowLast();
+  inventory = JSON.parse(localStorage.getItem("inventory"));
+  inventoryButton.classList = localStorage.getItem("inventoryBTN");
+  console.log(inventoryButton);
 });
 
 // ------------------------------------------------- Run App -------------------------------------------------------------
