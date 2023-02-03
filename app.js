@@ -7,6 +7,7 @@ const shovel = document.querySelector(".shovel");
 const inventoryButton = document.querySelector(".inventory");
 const save = document.querySelector(".save");
 const reset = document.querySelector(".reset");
+const load = document.querySelector(".load");
 
 let currTool;
 let inventory = [];
@@ -96,7 +97,10 @@ inventoryButton.addEventListener("click", function () {
 });
 
 function checkMatch(tile, currTool) {
-  return tile.classList.contains(currTool) ? true : false;
+  return tile.classList.contains(currTool) &&
+    !tile.classList.contains("removed")
+    ? true
+    : false;
 }
 
 function removeTile(tile) {
@@ -120,7 +124,7 @@ function updateInventoryDisp() {
   inventoryShowLast();
   removedFromInventory = inventory.pop();
   if (inventory.length === 0) {
-    inventoryButton.classList.add('removed');
+    inventoryButton.classList.add("removed");
   }
   console.log(inventory);
 }
@@ -132,6 +136,20 @@ function insertTile(tile) {
     tile.classList.add(removedFromInventory[0]);
     tile.classList.add(removedFromInventory[1]);
   }
+}
+
+function addListeners(tileDiv) {
+  tileDiv.addEventListener("click", function (event) {
+    if (checkMatch(event.target, currTool)) {
+      removeTile(event.target);
+      addToInventory(event.target);
+      inventoryShowLast();
+    }
+    if (currTool === "inventory") {
+      insertTile(event.target);
+    }
+    console.log(event);
+  });
 }
 
 function createTile(world, rows, cols) {
@@ -151,16 +169,7 @@ function createWorld(world) {
   for (let i = 0; i < world.length; i++) {
     for (let j = 0; j < world[i].length; j++) {
       const tileDiv = createTile(world, i, j);
-      tileDiv.addEventListener("click", function (event) {
-        if (checkMatch(event.target, currTool)) {
-          removeTile(event.target);
-          addToInventory(event.target);
-          inventoryShowLast();
-        }
-        if (currTool === "inventory") {
-          insertTile(event.target);
-        }
-      });
+      addListeners(tileDiv);
     }
   }
 }
@@ -173,4 +182,20 @@ reset.addEventListener("click", function () {
   createWorld(world1);
 });
 
+save.addEventListener("click", function () {
+  localStorage.setItem("progress", tileGrid.innerHTML);
+  localStorage.setItem("inventory", inventory);
+});
+
+load.addEventListener("click", function () {
+  tileGrid.innerHTML = localStorage.getItem("progress");
+  for (let i = 0; i < tileGrid.children.length; i++) {
+    addListeners(tileGrid.children[i]);
+  }
+  inventory = localStorage.getItem("inventory");
+  inventoryShowLast();
+});
+
 createWorld(world1);
+console.log(tileGrid.children[7]);
+console.log(tileGrid.childNodes[7]);
