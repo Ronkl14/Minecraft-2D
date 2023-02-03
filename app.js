@@ -4,8 +4,16 @@ const tileGrid = document.querySelector(".blocks");
 const axe = document.querySelector(".axe");
 const pickaxe = document.querySelector(".pickaxe");
 const shovel = document.querySelector(".shovel");
+const inventoryButton = document.querySelector(".inventory");
 
 let currTool;
+let inventory = [];
+let removedFromInventory;
+
+const background = {
+  tool: "tool",
+  class: "class",
+};
 
 const dirt = {
   tool: "shovel",
@@ -38,12 +46,14 @@ const leaf = {
 };
 
 const cloud = {
-  tool: null,
+  tool: "tool",
   class: "cloud",
 };
 
 function numToTile(num) {
   switch (num) {
+    case 0:
+      return background;
     case 1:
       return dirt;
     case 2:
@@ -78,12 +88,44 @@ pickaxe.addEventListener("click", function () {
   console.log(currTool);
 });
 
+inventoryButton.addEventListener("click", function () {
+  currTool = "inventory";
+  console.log(currTool);
+});
+
 function checkMatch(tile, currTool) {
   return tile.classList.contains(currTool) ? true : false;
 }
 
 function removeTile(tile) {
   tile.classList.add("removed");
+}
+
+function addToInventory(tile) {
+  let classArr = [tile.classList[0], tile.classList[1]];
+  inventory.push(classArr);
+  console.log(inventory);
+}
+
+function inventoryShowLast() {
+  console.log(inventoryButton);
+  inventoryButton.classList.remove(inventoryButton.classList[1]);
+  inventoryButton.classList.add(inventory[inventory.length - 1][0]);
+}
+
+function updateInventoryDisp(tile) {
+  removedFromInventory = inventory.pop();
+  inventoryShowLast();
+}
+
+function insertTile(tile) {
+  console.log(tile.classList[0]);
+  if (tile.classList[0] === "class" || tile.classList[2] ==="removed") {
+    updateInventoryDisp();
+    tile.classList.remove(...tile.classList);
+    tile.classList.add(removedFromInventory[0]);
+    tile.classList.add(removedFromInventory[1]);
+  }
 }
 
 for (let i = 0; i < world1.length; i++) {
@@ -98,7 +140,16 @@ for (let i = 0; i < world1.length; i++) {
     tileDiv.classList.add(currentTile.class);
     tileDiv.classList.add(currentTile.tool);
     tileDiv.addEventListener("click", function (event) {
-      checkMatch(event.target, currTool) ? removeTile(event.target) : "";
+      console.log(event.target);
+      if (checkMatch(event.target, currTool)) {
+        removeTile(event.target);
+        addToInventory(event.target);
+        inventoryShowLast();
+      }
+      if (currTool === "inventory") {
+        console.log(inventory);
+        insertTile(event.target);
+      }
     });
   }
 }
