@@ -221,6 +221,18 @@ body {
   background-image: url("/assets/img/pumpkin.jpg");
 }
 
+.cactus-top {
+  background-image: url("/assets/img/Cactus_top.jpg");
+}
+
+.cactus {
+  background-image: url("/assets/img/Cactus_29_JE4_BE2.jpg");
+}
+
+.sun {
+    background-color: yellow;
+}
+
 .removed {
   background-image: none;
 }
@@ -230,12 +242,12 @@ body {
 }
 
 .blocks .thanosed {
-  transition: opacity .8s;
+  transition: opacity 0.8s;
   opacity: 0;
 }
 
 .tools .active-tool {
-    border-color: var(--active);
+  border-color: var(--active);
 }
 
 @media screen and (max-width: 500px) {

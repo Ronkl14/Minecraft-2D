@@ -1,6 +1,6 @@
 // ------------------------------------------------- Imports -------------------------------------------------------------
 
-import { world1, world2, world3, world4, world5 } from "./worlds.js";
+import { world1, world2, world3, world4, world5, world6 } from "./worlds.js";
 import {
   background,
   dirt,
@@ -11,6 +11,9 @@ import {
   leaf,
   cloud,
   pumpkin,
+  cactus,
+  cactusTop,
+  sun,
 } from "./tiles.js";
 
 // ------------------------------------------------- Variables -------------------------------------------------------------
@@ -37,7 +40,7 @@ let inventory = [];
 // ------------------------------------------------- Functions -------------------------------------------------------------
 
 function selectWorld() {
-  const randomNum = Math.ceil(Math.random() * 5);
+  const randomNum = Math.ceil(Math.random() * 6);
   switch (randomNum) {
     case 1:
       currWorld = world1;
@@ -54,6 +57,8 @@ function selectWorld() {
     case 5:
       currWorld = world5;
       return;
+    case 6:
+      currWorld = world6;
     default:
       return;
   }
@@ -79,6 +84,12 @@ function numToTile(num) {
       return cloud;
     case 8:
       return pumpkin;
+    case 9:
+      return cactus;
+    case 10:
+      return cactusTop;
+    case 11:
+      return sun;
     default:
       return "";
   }
@@ -181,7 +192,7 @@ axe.addEventListener("click", function () {
   shovelImg.classList.remove("active-tool");
   pickaxeImg.classList.remove("active-tool");
   thanosImg.classList.remove("active-tool");
-  inventoryButton.classList.remove('active-tool');
+  inventoryButton.classList.remove("active-tool");
   console.log(currTool);
 });
 
@@ -191,7 +202,7 @@ shovel.addEventListener("click", function () {
   shovelImg.classList.add("active-tool");
   pickaxeImg.classList.remove("active-tool");
   thanosImg.classList.remove("active-tool");
-  inventoryButton.classList.remove('active-tool');
+  inventoryButton.classList.remove("active-tool");
   console.log(currTool);
 });
 
@@ -201,7 +212,7 @@ pickaxe.addEventListener("click", function () {
   shovelImg.classList.remove("active-tool");
   pickaxeImg.classList.add("active-tool");
   thanosImg.classList.remove("active-tool");
-  inventoryButton.classList.remove('active-tool');
+  inventoryButton.classList.remove("active-tool");
   console.log(currTool);
 });
 
@@ -211,7 +222,7 @@ thanos.addEventListener("click", function () {
   shovelImg.classList.remove("active-tool");
   pickaxeImg.classList.remove("active-tool");
   thanosImg.classList.add("active-tool");
-  inventoryButton.classList.remove('active-tool');
+  inventoryButton.classList.remove("active-tool");
   console.log(currTool);
 
   let divs = tileGrid.querySelectorAll(
@@ -243,7 +254,7 @@ inventoryButton.addEventListener("click", function () {
   shovelImg.classList.remove("active-tool");
   pickaxeImg.classList.remove("active-tool");
   thanosImg.classList.remove("active-tool");
-  inventoryButton.classList.add('active-tool');
+  inventoryButton.classList.add("active-tool");
   console.log(currTool);
 });
 
@@ -276,4 +287,4 @@ load.addEventListener("click", function () {
 selectWorld();
 createWorld(currWorld);
 
-console.log(divs);
+

@@ -42,3 +42,18 @@ export const pumpkin = {
   tool: "shovel",
   class: "pumpkin",
 };
+
+export const cactus = {
+  tool: "axe",
+  class: "cactus",
+};
+
+export const cactusTop = {
+  tool: "axe",
+  class: "cactus-top",
+};
+
+export const sun = {
+  tool: "tool",
+  class: "sun",
+};
