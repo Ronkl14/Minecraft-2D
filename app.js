@@ -23,6 +23,8 @@ const inventoryButton = document.querySelector(".inventory");
 const save = document.querySelector(".save");
 const reset = document.querySelector(".reset");
 const load = document.querySelector(".load");
+const start = document.querySelector('.start');
+const splash = document.querySelector('.splash-screen')
 
 let currTool, currWorld, removedFromInventory;
 let inventory = [];
@@ -158,6 +160,10 @@ function createTile(world, rows, cols) {
 }
 
 // ------------------------------------------------- Event Listeners -------------------------------------------------------------
+
+start.addEventListener('click', function() {
+    splash.classList.add('hide');
+})
 
 axe.addEventListener("click", function () {
   currTool = "axe";
