@@ -275,6 +275,6 @@ load.addEventListener("click", function () {
 // ------------------------------------------------- Run App -------------------------------------------------------------
 
 selectWorld();
-createWorld(world6);
+createWorld(currWorld);
 
 
