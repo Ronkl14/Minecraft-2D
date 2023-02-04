@@ -110,7 +110,6 @@ function removeTile(tile) {
 function addToInventory(tile) {
   let classArr = [tile.classList[0], tile.classList[1]];
   inventory.push(classArr);
-  console.log(inventory);
 }
 
 function inventoryShowLast() {
@@ -119,7 +118,6 @@ function inventoryShowLast() {
   if (inventory.length > 0) {
     inventoryButton.classList.add(inventory[inventory.length - 1][0]);
   }
-  console.log(inventoryButton);
 }
 
 function updateInventoryDisp() {
@@ -128,7 +126,6 @@ function updateInventoryDisp() {
   if (inventory.length === 0) {
     inventoryButton.classList.add("removed");
   }
-  console.log(inventory);
 }
 
 function insertTile(tile) {
@@ -154,7 +151,6 @@ function addListeners(tileDiv) {
     if (currTool === "inventory") {
       insertTile(event.target);
     }
-    console.log(event.target);
   });
 }
 
@@ -193,7 +189,6 @@ axe.addEventListener("click", function () {
   pickaxeImg.classList.remove("active-tool");
   thanosImg.classList.remove("active-tool");
   inventoryButton.classList.remove("active-tool");
-  console.log(currTool);
 });
 
 shovel.addEventListener("click", function () {
@@ -203,7 +198,6 @@ shovel.addEventListener("click", function () {
   pickaxeImg.classList.remove("active-tool");
   thanosImg.classList.remove("active-tool");
   inventoryButton.classList.remove("active-tool");
-  console.log(currTool);
 });
 
 pickaxe.addEventListener("click", function () {
@@ -213,7 +207,6 @@ pickaxe.addEventListener("click", function () {
   pickaxeImg.classList.add("active-tool");
   thanosImg.classList.remove("active-tool");
   inventoryButton.classList.remove("active-tool");
-  console.log(currTool);
 });
 
 thanos.addEventListener("click", function () {
@@ -223,7 +216,6 @@ thanos.addEventListener("click", function () {
   pickaxeImg.classList.remove("active-tool");
   thanosImg.classList.add("active-tool");
   inventoryButton.classList.remove("active-tool");
-  console.log(currTool);
 
   let divs = tileGrid.querySelectorAll(
     "div:not(.removed):not(.class):not(.cloud)"
@@ -262,7 +254,6 @@ reset.addEventListener("click", function () {
   tileGrid.textContent = "";
   inventory = [];
   inventoryButton.classList.add("removed");
-  console.log(inventoryButton);
   createWorld(currWorld);
 });
 
@@ -279,7 +270,6 @@ load.addEventListener("click", function () {
   }
   inventory = JSON.parse(localStorage.getItem("inventory"));
   inventoryButton.classList = localStorage.getItem("inventoryBTN");
-  console.log(inventoryButton);
 });
 
 // ------------------------------------------------- Run App -------------------------------------------------------------
