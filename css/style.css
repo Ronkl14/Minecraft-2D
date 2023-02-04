@@ -168,7 +168,7 @@ body {
 }
 
 .tooltip {
-    position:relative;
+  position: relative;
 }
 
 .tooltip .tooltiptext {
@@ -227,6 +227,11 @@ body {
 
 .hide {
   display: none;
+}
+
+.blocks .thanosed {
+  transition: opacity .8s;
+  opacity: 0;
 }
 
 @media screen and (max-width: 500px) {

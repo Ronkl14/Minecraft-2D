@@ -82,7 +82,8 @@ function numToTile(num) {
 
 function checkMatch(tile, currTool) {
   return tile.classList.contains(currTool) &&
-    !tile.classList.contains("removed")
+    !tile.classList.contains("removed") &&
+    !tile.classList.contains("thanosed")
     ? true
     : false;
 }
@@ -116,7 +117,11 @@ function updateInventoryDisp() {
 }
 
 function insertTile(tile) {
-  if (tile.classList[0] === "class" || tile.classList[2] === "removed") {
+  if (
+    tile.classList[0] === "class" ||
+    tile.classList[2] === "removed" ||
+    tile.classList.contains("thanosed")
+  ) {
     updateInventoryDisp();
     tile.classList.remove(...tile.classList);
     tile.classList.add(removedFromInventory[0]);
@@ -197,11 +202,11 @@ thanos.addEventListener("click", function () {
     }
 
     const randomIndex = Math.floor(Math.random() * divs.length);
-    divs[randomIndex].classList.add("removed");
+    divs[randomIndex].classList.add("thanosed");
     counter++;
     i++;
 
-    setTimeout(removeNextDiv, 200);
+    setTimeout(removeNextDiv, 100);
   }
 
   removeNextDiv();
