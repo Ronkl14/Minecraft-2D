@@ -19,12 +19,13 @@ const tileGrid = document.querySelector(".blocks");
 const axe = document.querySelector(".axe");
 const pickaxe = document.querySelector(".pickaxe");
 const shovel = document.querySelector(".shovel");
+const thanos = document.querySelector(".thanos");
 const inventoryButton = document.querySelector(".inventory");
 const save = document.querySelector(".save");
 const reset = document.querySelector(".reset");
 const load = document.querySelector(".load");
-const start = document.querySelector('.start');
-const splash = document.querySelector('.splash-screen')
+const start = document.querySelector(".start");
+const splash = document.querySelector(".splash-screen");
 
 let currTool, currWorld, removedFromInventory;
 let inventory = [];
@@ -161,9 +162,9 @@ function createTile(world, rows, cols) {
 
 // ------------------------------------------------- Event Listeners -------------------------------------------------------------
 
-start.addEventListener('click', function() {
-    splash.classList.add('hide');
-})
+start.addEventListener("click", function () {
+  splash.classList.add("hide");
+});
 
 axe.addEventListener("click", function () {
   currTool = "axe";
@@ -178,6 +179,25 @@ shovel.addEventListener("click", function () {
 pickaxe.addEventListener("click", function () {
   currTool = "pickaxe";
   console.log(currTool);
+});
+
+thanos.addEventListener("click", function () {
+  currTool = "thanos";
+  console.log(currTool);
+  let divs = tileGrid.querySelectorAll(
+    "div:not(.removed):not(.class):not(.cloud)"
+  );
+  const numberToRemove = Math.ceil(divs.length / 2);
+  let counter = 0;
+
+  for (let i = 0; i < divs.length; i++) {
+    if (counter >= numberToRemove) {
+      break;
+    }
+    const randomIndex = Math.floor(Math.random() * divs.length);
+    divs[randomIndex].classList.add("removed");
+    counter++;
+  }
 });
 
 inventoryButton.addEventListener("click", function () {
@@ -211,5 +231,7 @@ load.addEventListener("click", function () {
 
 // ------------------------------------------------- Run App -------------------------------------------------------------
 
-selectWorld()
+selectWorld();
 createWorld(currWorld);
+
+console.log(divs);
