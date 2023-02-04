@@ -234,6 +234,10 @@ body {
   opacity: 0;
 }
 
+.tools .active-tool {
+    border-color: var(--active);
+}
+
 @media screen and (max-width: 500px) {
   .tools .btn {
     font-size: 1rem;

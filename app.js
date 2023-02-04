@@ -20,6 +20,10 @@ const axe = document.querySelector(".axe");
 const pickaxe = document.querySelector(".pickaxe");
 const shovel = document.querySelector(".shovel");
 const thanos = document.querySelector(".thanos");
+const axeImg = document.querySelector(".axe-wrap");
+const shovelImg = document.querySelector(".shovel-wrap");
+const pickaxeImg = document.querySelector(".pickaxe-wrap");
+const thanosImg = document.querySelector(".thanos-wrap");
 const inventoryButton = document.querySelector(".inventory");
 const save = document.querySelector(".save");
 const reset = document.querySelector(".reset");
@@ -173,22 +177,43 @@ start.addEventListener("click", function () {
 
 axe.addEventListener("click", function () {
   currTool = "axe";
+  axeImg.classList.add("active-tool");
+  shovelImg.classList.remove("active-tool");
+  pickaxeImg.classList.remove("active-tool");
+  thanosImg.classList.remove("active-tool");
+  inventoryButton.classList.remove('active-tool');
   console.log(currTool);
 });
 
 shovel.addEventListener("click", function () {
   currTool = "shovel";
+  axeImg.classList.remove("active-tool");
+  shovelImg.classList.add("active-tool");
+  pickaxeImg.classList.remove("active-tool");
+  thanosImg.classList.remove("active-tool");
+  inventoryButton.classList.remove('active-tool');
   console.log(currTool);
 });
 
 pickaxe.addEventListener("click", function () {
   currTool = "pickaxe";
+  axeImg.classList.remove("active-tool");
+  shovelImg.classList.remove("active-tool");
+  pickaxeImg.classList.add("active-tool");
+  thanosImg.classList.remove("active-tool");
+  inventoryButton.classList.remove('active-tool');
   console.log(currTool);
 });
 
 thanos.addEventListener("click", function () {
   currTool = "thanos";
+  axeImg.classList.remove("active-tool");
+  shovelImg.classList.remove("active-tool");
+  pickaxeImg.classList.remove("active-tool");
+  thanosImg.classList.add("active-tool");
+  inventoryButton.classList.remove('active-tool');
   console.log(currTool);
+
   let divs = tileGrid.querySelectorAll(
     "div:not(.removed):not(.class):not(.cloud)"
   );
@@ -214,6 +239,11 @@ thanos.addEventListener("click", function () {
 
 inventoryButton.addEventListener("click", function () {
   currTool = "inventory";
+  axeImg.classList.remove("active-tool");
+  shovelImg.classList.remove("active-tool");
+  pickaxeImg.classList.remove("active-tool");
+  thanosImg.classList.remove("active-tool");
+  inventoryButton.classList.add('active-tool');
   console.log(currTool);
 });
 
