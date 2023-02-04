@@ -189,15 +189,22 @@ thanos.addEventListener("click", function () {
   );
   const numberToRemove = Math.ceil(divs.length / 2);
   let counter = 0;
+  let i = 0;
 
-  for (let i = 0; i < divs.length; i++) {
-    if (counter >= numberToRemove) {
-      break;
+  function removeNextDiv() {
+    if (i >= divs.length || counter >= numberToRemove) {
+      return;
     }
+
     const randomIndex = Math.floor(Math.random() * divs.length);
     divs[randomIndex].classList.add("removed");
     counter++;
+    i++;
+
+    setTimeout(removeNextDiv, 200);
   }
+
+  removeNextDiv();
 });
 
 inventoryButton.addEventListener("click", function () {
