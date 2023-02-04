@@ -3,9 +3,9 @@
 This project has been made for a weekend assignment in the AppleSeeds Fullstack Developer Bootcamp by Ron Klik.<br>
 The game is available on: https://strong-basbousa-39e2df.netlify.app/
 
-This game is built with vanilla javascript only, using HTML, CSS, JS and DOM manipulation.
-The game loads a random map, out of 6 available maps.
-The user can choose a tool and mine a tile corresponding to the tool he chose.
+This game is built with vanilla javascript only, using HTML, CSS, JS and DOM manipulation.<br>
+The game loads a random map, out of 6 available maps.<br>
+The user can choose a tool and mine a tile corresponding to the tool he chose.<br>
 The Thanos button is a special button, when selected it will start removing 50% of the available tiles randomly.
 
 The user can also save his progress with the 'save' button and load it with 'load', this is done with localStorage.
