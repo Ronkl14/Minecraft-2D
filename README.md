@@ -1,6 +1,6 @@
 # Minecraft-2D
 
-This project has been made for a weekend assignment in the AppleSeeds Fullstack Developer Bootcamp by Ron Klik.
+This project has been made for a weekend assignment in the AppleSeeds Fullstack Developer Bootcamp by Ron Klik.<br>
 The game is available on: https://strong-basbousa-39e2df.netlify.app/
 
 This game is built with vanilla javascript only, using HTML, CSS, JS and DOM manipulation.
