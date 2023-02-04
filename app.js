@@ -1,6 +1,6 @@
 // ------------------------------------------------- Imports -------------------------------------------------------------
 
-import { world1 } from "./worlds.js";
+import { world1, world2, world3, world4, world5 } from "./worlds.js";
 import {
   background,
   dirt,
@@ -10,6 +10,7 @@ import {
   wood,
   leaf,
   cloud,
+  pumpkin,
 } from "./tiles.js";
 
 // ------------------------------------------------- Variables -------------------------------------------------------------
@@ -23,10 +24,33 @@ const save = document.querySelector(".save");
 const reset = document.querySelector(".reset");
 const load = document.querySelector(".load");
 
-let currTool, removedFromInventory;
+let currTool, currWorld, removedFromInventory;
 let inventory = [];
 
 // ------------------------------------------------- Functions -------------------------------------------------------------
+
+function selectWorld() {
+  const randomNum = Math.ceil(Math.random() * 5);
+  switch (randomNum) {
+    case 1:
+      currWorld = world1;
+      return;
+    case 2:
+      currWorld = world2;
+      return;
+    case 3:
+      currWorld = world3;
+      return;
+    case 4:
+      currWorld = world4;
+      return;
+    case 5:
+      currWorld = world5;
+      return;
+    default:
+      return;
+  }
+}
 
 function numToTile(num) {
   switch (num) {
@@ -46,6 +70,8 @@ function numToTile(num) {
       return sand;
     case 7:
       return cloud;
+    case 8:
+      return pumpkin;
     default:
       return "";
   }
@@ -158,7 +184,7 @@ reset.addEventListener("click", function () {
   inventory = [];
   inventoryButton.classList.add("removed");
   console.log(inventoryButton);
-  createWorld(world1);
+  createWorld(currWorld);
 });
 
 save.addEventListener("click", function () {
@@ -166,9 +192,6 @@ save.addEventListener("click", function () {
   localStorage.setItem("inventory", JSON.stringify(inventory));
   localStorage.setItem("inventoryBTN", inventoryButton.classList);
 });
-
-let classes = "blalala";
-console.log(classes);
 
 load.addEventListener("click", function () {
   tileGrid.innerHTML = localStorage.getItem("progress");
@@ -182,4 +205,5 @@ load.addEventListener("click", function () {
 
 // ------------------------------------------------- Run App -------------------------------------------------------------
 
-createWorld(world1);
+selectWorld()
+createWorld(currWorld);

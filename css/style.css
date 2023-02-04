@@ -115,6 +115,10 @@ body {
   background-color: white;
 }
 
+.pumpkin {
+    background-image: url('/assets/img/pumpkin.jpg');
+}
+
 .removed {
   background-image: none;
 }

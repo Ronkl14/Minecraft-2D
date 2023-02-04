@@ -37,3 +37,8 @@ export const cloud = {
   tool: "tool",
   class: "cloud",
 };
+
+export const pumpkin = {
+  tool: "shovel",
+  class: "pumpkin",
+};
