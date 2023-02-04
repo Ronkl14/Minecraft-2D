@@ -1,5 +1,5 @@
 :root {
-    --active: rgb(119, 119, 209);
+  --active: rgb(119, 119, 209);
 }
 
 @font-face {
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "Minecraft big";
-  src: url('/assets/fonts/MinecraftTen-VGORe.ttf');
+  src: url("/assets/fonts/MinecraftTen-VGORe.ttf");
 }
 
 body {
@@ -62,15 +62,15 @@ body {
 }
 
 .splash-screen ul {
-    background-color: rgba(128, 128, 128, 0.5);
-    padding:2rem;
+  background-color: rgba(128, 128, 128, 0.5);
+  padding: 2rem;
 }
 
 .splash-screen li {
-    color:white;
-    font-size: 2rem;
-    font-family: 'Minecraft';
-    padding: 1rem 0;
+  color: white;
+  font-size: 2rem;
+  font-family: "Minecraft";
+  padding: 1rem 0;
 }
 
 .game-container {
@@ -98,7 +98,7 @@ body {
 }
 
 .blocks > div:hover {
-    border:1px solid white;
+  border: 1px solid white;
 }
 
 .tools {
@@ -165,6 +165,28 @@ body {
 
 .btn:active {
   background-color: rgb(156, 154, 154);
+}
+
+.tooltip {
+    position:relative;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 15rem;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 1.2rem;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }
 
 .dirt {
