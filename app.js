@@ -221,17 +221,15 @@ thanos.addEventListener("click", function () {
     "div:not(.removed):not(.class):not(.cloud)"
   );
   const numberToRemove = Math.ceil(divs.length / 2);
-  let counter = 0;
   let i = 0;
 
   function removeNextDiv() {
-    if (i >= divs.length || counter >= numberToRemove) {
+    if (i >= divs.length || divs.length <= numberToRemove) {
       return;
     }
 
     const randomIndex = Math.floor(Math.random() * divs.length);
     divs[randomIndex].classList.add("thanosed");
-    counter++;
     i++;
 
     setTimeout(removeNextDiv, 100);
@@ -247,7 +245,6 @@ inventoryButton.addEventListener("click", function () {
   pickaxeImg.classList.remove("active-tool");
   thanosImg.classList.remove("active-tool");
   inventoryButton.classList.add("active-tool");
-  console.log(currTool);
 });
 
 reset.addEventListener("click", function () {
